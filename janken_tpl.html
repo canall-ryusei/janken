@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<script src="js/jquery-2.1.3.min.js"></script>
+<link rel="stylesheet" href="css/sample.css">
+<title>じゃんけん</title>
+</head>
+<body>
+
+<header>
+    <h1>じゃんけん</h1>
+</header>
+
+<main>
+    <ul>
+        <li id="gu_btn">グー</li>
+        <li id="cho_btn">チョキ</li>
+        <li id="par_btn">パー</li>
+    </ul>
+    <div>コンピュータの出した手は？「<span id="pc_hands">なに？</span>」</div>
+    <div id="judgment">勝ち</div>
+</main>
+
+<footer></footer>
+<script>
+// sampleで出た方法だけでやってみる。ダサくてもOK
+// 先に順番考える
+// プレイヤの手は_btnから拾う。1＝グー,2＝チョキ,3＝パー
+// 乱数でPCの手を出す
+// com 1＝グー,2＝チョキ,3＝パー
+// 結果のJudgmentの表示のさせ方で引っかかった。シンプルに2行で書けば良かった。
+// 雰囲気だけで
+
+// player 1＝グー__com 1＝グーあいこ,2＝チョキあなたの勝ち,3＝パーあなたの負け
+    $("#gu_btn").on("click",function(){
+        const r = Math.ceil(Math.random()*3); //1～3がでる
+        if(r==1){
+            $("#pc_hands").html("グー");
+            $("#judgment").html("あいこ");
+        }
+        if(r==2){
+            $("#pc_hands").html("チョキ");
+            $("#judgment").html("あなたの勝ち");
+        }
+        if(r==3){
+            $("#pc_hands").html("パー");
+            $("#judgment").html("あなたの負け");
+        }
+    });
+
+// player 2＝チョキ__com 1＝グーあなたの負け,2＝チョキあいこ,3＝パーあなたの勝ち
+    $("#cho_btn").on("click",function(){
+        const r = Math.ceil(Math.random()*3); //1～3がでる
+        if(r==1){
+            $("#pc_hands").html("グー");
+            $("#judgment").html("あなたの負け");
+        }
+        if(r==2){
+            $("#pc_hands").html("チョキ");
+            $("#judgment").html("あいこ");
+        }
+        if(r==3){
+            $("#pc_hands").html("パー");
+            $("#judgment").html("あなたの勝ち");
+        }
+    });
+
+// player 3＝パー__com 1＝グーあなたの勝ち,2＝チョキあなたの負け,3＝パーあいこ
+    $("#par_btn").on("click",function(){
+        const r = Math.ceil(Math.random()*3); //1～3がでる
+        if(r==1){
+            $("#pc_hands").html("グー");
+            $("#judgment").html("あなたの勝ち");
+        }
+        if(r==2){
+            $("#pc_hands").html("チョキ");
+            $("#judgment").html("あなたの負け");
+        }
+        if(r==3){
+            $("#pc_hands").html("パー");
+            $("#judgment").html("あいこ");
+        }
+    });
+    
+
+</script>
+</body>
+</html>
